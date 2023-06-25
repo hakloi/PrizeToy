@@ -10,7 +10,7 @@ public class Shop {
     public Shop() {
         toys = new ArrayList<Toy>();
         prizeToys = new ArrayList<Toy>();
-        prizeFilePath = "prize_toys.txt";
+        prizeFilePath = "our_toys.txt";
     }
 
     public void addToy(Toy toy) {
@@ -25,7 +25,12 @@ public class Shop {
         }
     }
 
-    public void organizeRaffle() {
+    public void organizeLottery() {
+        // clear console
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+
+        // code begins
         prizeToys.clear();
 
         for (Toy toy : toys) {
@@ -38,19 +43,19 @@ public class Shop {
     public Toy getPrizeToy() {
         if (!prizeToys.isEmpty()) {
             Toy prizeToy = prizeToys.remove(0);
-            prizeToy.setQuantity(prizeToy.getCount() - 1);
+            prizeToy.setCount(prizeToy.getCount() - 1);
 
             try {
                 FileWriter writer = new FileWriter(prizeFilePath, true);
                 writer.write(prizeToy.getName() + "\n");
                 writer.close();
             } catch (IOException e) {
-                System.out.println("Ошибка при записи в файл игрушки");
+                System.out.println("Error!");
             }
 
             return prizeToy;
         } else {
-            System.out.println("Все игрушки кончились");
+            System.out.println("Our shop is empty! Return later!");
             return null;
         }
     }

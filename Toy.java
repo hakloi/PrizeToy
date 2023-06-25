@@ -23,7 +23,7 @@ public class Toy {
     }
 
 
-    public int getcount() {
+    public int getCount() {
         return count;
     }
 
@@ -32,7 +32,7 @@ public class Toy {
         return frequency;
     }
 
-    public void setcount(int count) {
+    public void setCount(int count) {
         this.count = count;
     }
 
